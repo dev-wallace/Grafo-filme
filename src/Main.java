@@ -32,5 +32,9 @@ public class Main {
         // 5. Execução do BFS a partir de Bruno
         System.out.println("\n=== TESTE BFS ===");
         grafo.bfs(bruno);
+
+        // 6. Execução do BFS a partir de Carlos
+        System.out.println("\n=== TESTE BFS ===");
+        grafo.bfs(carlos);
     }
 }
