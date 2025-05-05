@@ -14,7 +14,7 @@ public class Grafo {
     }
 
     public void adicionarAresta(Vertice inicio, Vertice fim, int peso) {
-        Aresta a = new Aresta(inicio, fim, peso);
+        Aresta a = new Aresta(inicio, fim, peso); // Cria uma nova aresta tendo que colocar implicitamente inico, fim e peso
         arestas.add(a);
     }
 
