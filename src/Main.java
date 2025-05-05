@@ -1,41 +1,30 @@
 public class Main {
     public static void main(String[] args) {
-        GrafoRecomendacao grafo = new GrafoRecomendacao();
+        Grafo grafo = new Grafo();
 
-        // Criar filmes
-        Filme matrix = new Filme("Matrix");
-        Filme avatar = new Filme("Avatar");
-        Filme inception = new Filme("Inception");
-        Filme titanic = new Filme("Titanic");
+        // Criando vértices (usuários e filmes)
+        Vertice ana = new Vertice("Ana");
+        Vertice bruno = new Vertice("Bruno");
+        Vertice matrix = new Vertice("Matrix");
+        Vertice avatar = new Vertice("Avatar");
 
-        grafo.adicionarFilme(matrix);
-        grafo.adicionarFilme(avatar);
-        grafo.adicionarFilme(inception);
-        grafo.adicionarFilme(titanic);
+        // Adicionando vértices no grafo
+        grafo.adicionarVertice(ana);
+        grafo.adicionarVertice(bruno);
+        grafo.adicionarVertice(matrix);
+        grafo.adicionarVertice(avatar);
 
-        // Criar usuários
-        Usuario ana = new Usuario("Ana");
-        Usuario bruno = new Usuario("Bruno");
-        Usuario carla = new Usuario("Carla");
+        // Adicionando arestas (avaliações)
+        grafo.adicionarAresta(ana, matrix, 5);   // Ana → Matrix (nota 5)
+        grafo.adicionarAresta(ana, avatar, 4);   // Ana → Avatar (nota 4)
+        grafo.adicionarAresta(bruno, matrix, 5); // Bruno → Matrix (nota 5)
 
-        grafo.adicionarUsuario(ana);
-        grafo.adicionarUsuario(bruno);
-        grafo.adicionarUsuario(carla);
-
-        // Avaliações
-        ana.avaliarFilme(matrix, 5);
-        ana.avaliarFilme(avatar, 4);
-
-        bruno.avaliarFilme(matrix, 5);
-        bruno.avaliarFilme(inception, 4);
-
-        carla.avaliarFilme(avatar, 5);
-        carla.avaliarFilme(titanic, 4);
-
-        // Recomendar para Ana
-        System.out.println("Recomendações para Ana:");
-        for (Filme f : grafo.recomendar(ana)) {
-            System.out.println("- " + f.getTitulo());
+        // Exibindo conexões
+        for (Aresta a : grafo.getArestas()) {
+            System.out.println(
+                a.getInicio().getNome() + " → " +
+                a.getFim().getNome() + " (Nota: " + a.getPeso() + ")"
+            );
         }
     }
 }
