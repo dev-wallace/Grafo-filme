@@ -22,9 +22,11 @@ public class Main {
         // Exibindo conexões
         for (Aresta a : grafo.getArestas()) {
             System.out.println(
-                a.getInicio().getNome() + " → " +
+                a.getInicio().getNome() + "  " +
                 a.getFim().getNome() + " (Nota: " + a.getPeso() + ")"
             );
         }
+        grafo.bfs(ana); // Iniciando BFS a partir de Ana
+        System.out.println("BFS a partir de: " + ana.getNome());
     }
 }
