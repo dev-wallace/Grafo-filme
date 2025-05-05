@@ -10,7 +10,7 @@ public class Grafo {
     private List<Aresta> arestas = new ArrayList<>();
 
     public void adicionarVertice(Vertice v) {
-        vertices.add(v);
+        vertices.add(v); // Adiciona o vértice à lista 'vertices'
     }
 
     public void adicionarAresta(Vertice inicio, Vertice fim, int peso) {
@@ -35,26 +35,30 @@ public class Grafo {
     
         System.out.println("BFS a partir de: " + inicio.getNome());
     
-        while (!fila.isEmpty()) {
-            Vertice atual = fila.poll();
+        while (!fila.isEmpty()) { // Enquanto tiver pontos para visitar...
+            Vertice atual = fila.poll(); // Pega o primeiro da fila (Ana)
             System.out.println("Visitando: " + atual.getNome());
-    
+
+     // Procura todas as setas que saem do ponto atual
             for (int i = 0; i < arestas.size(); i++) {
                 Aresta a = arestas.get(i);
+               
+                    // Se a seta começa no ponto atual...
                 if (a.getInicio() == atual) {
-                    Vertice vizinho = a.getFim();
-    
+                    Vertice vizinho = a.getFim(); // Pega o destino da seta
+
+                        // Verifica se já visitou esse vizinho
                     boolean jaVisitado = false;
                     for (int j = 0; j < visitados.size(); j++) {
-                        if (visitados.get(j) == vizinho) {
+                        if (visitados.get(j) == vizinho) { 
                             jaVisitado = true;
                             break;
                         }
                     }
     
                     if (!jaVisitado) {
-                        fila.add(vizinho);
-                        visitados.add(vizinho);
+                        fila.add(vizinho); // Coloca na fila
+                        visitados.add(vizinho); // Marca como visitado
                     }
                 }
             }
